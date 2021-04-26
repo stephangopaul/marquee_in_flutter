@@ -1,14 +1,14 @@
-# marquee
+## Marquee
 
-A new Flutter package project.
+This package provides marquee widgets that receive items(type: `List<Widget>`) as input
 
-## Getting Started
+![ezgif-7-4da492287b77](https://user-images.githubusercontent.com/9502063/116103391-817dde80-a6ea-11eb-94b7-b032d545ee1a.gif)
 
-This project is a starting point for a Dart
-[package](https://flutter.dev/developing-packages/),
-a library module containing code that can be shared easily across
-multiple Flutter or Dart projects.
+## Usage
+There are two types.
 
-For help getting started with Flutter, view our 
-[online documentation](https://flutter.dev/docs), which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.
+### 1. ScrollMarquee
+- Scroll to left infinitely
+
+### 2. AlternateMarquee
+- Scroll left and right bounce infinitely
