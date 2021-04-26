@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:marquee/marquee.dart';
+import 'package:marquee_in_flutter/marquee.dart';
 
 void main() {
   runApp(MyApp());
