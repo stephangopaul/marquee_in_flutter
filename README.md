@@ -1,4 +1,4 @@
-## Marquee
+## marquee_in_flutter
 
 This package provides marquee widgets that receive items(type: `List<Widget>`) as input
 
