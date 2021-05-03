@@ -31,7 +31,8 @@ class _RootWidget extends StatelessWidget {
                 items: [
                   Image.asset("images/puppy.jpg", width: 100, height: 100),
                   Text(" Hello Flutter ", style: _textStyle)
-                ]
+                ],
+                speed: Speed.slow,
             ),
           ),
           SizedBox(
@@ -44,7 +45,8 @@ class _RootWidget extends StatelessWidget {
                   Text("🐶 Puppy 🐶", style: _textStyle),
                   SizedBox(width: 10),
                   Image.asset("images/puppy.jpg", width: 50, height: 50)
-                ]
+                ],
+              speed: Speed.fast,
             ),
           )
         ],

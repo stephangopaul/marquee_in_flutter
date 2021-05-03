@@ -1,16 +1,15 @@
 import 'package:flutter/cupertino.dart';
+import 'speed.dart';
 
 class AlternateMarquee extends StatefulWidget {
 
   final List<Widget> items;
-  final Duration animationDuration, backDuration, pauseDuration;
+  final Speed speed;
 
   AlternateMarquee({
     Key key,
     @required this.items,
-    this.animationDuration = const Duration(seconds: 1),
-    this.backDuration = const Duration(seconds: 1),
-    this.pauseDuration = const Duration(seconds: 1),
+    this.speed = Speed.normal
   }): super(key: key);
 
   @override
@@ -47,10 +46,14 @@ class _AlternateMarqueeState extends State<AlternateMarquee> {
   }
 
   Future<bool> _scroll() async {
-    await Future.delayed(widget.pauseDuration);
-    _scrollController.animateTo(_scrollController.position.maxScrollExtent, duration: widget.animationDuration, curve: Curves.easeOut);
-    await Future.delayed(widget.pauseDuration);
-    _scrollController.animateTo(_scrollController.position.minScrollExtent, duration: widget.backDuration, curve: Curves.easeOut);
+    if (widget.speed == Speed.stop) {
+      return false;
+    }
+
+    await Future.delayed(widget.speed.pauseDuration);
+    _scrollController.animateTo(_scrollController.position.maxScrollExtent, duration: widget.speed.animationDuration, curve: Curves.easeOut);
+    await Future.delayed(widget.speed.pauseDuration);
+    _scrollController.animateTo(_scrollController.position.minScrollExtent, duration: widget.speed.backDuration, curve: Curves.easeOut);
     return true;
   }
 }

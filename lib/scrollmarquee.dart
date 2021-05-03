@@ -1,14 +1,15 @@
 import 'package:flutter/cupertino.dart';
+import 'speed.dart';
 
 class ScrollMarquee extends StatefulWidget {
 
   final List<Widget> items;
-  final Duration moveDuration;
+  final Speed speed;
 
   ScrollMarquee({
     Key key,
     @required this.items,
-    this.moveDuration = const Duration(milliseconds: 100)
+    this.speed = Speed.normal
   }): super(key: key);
 
   @override
@@ -37,7 +38,7 @@ class _ScrollMarqueeState extends State<ScrollMarquee> {
             child: widget.items[index % widget.items.length]
           );
         },
-        itemCount: widget.moveDuration == Duration.zero ? widget.items.length : null,
+        itemCount: widget.speed == Speed.stop ? widget.items.length : null,
         scrollDirection: Axis.horizontal,
         controller: _scrollController,
         physics: NeverScrollableScrollPhysics(),
@@ -51,12 +52,16 @@ class _ScrollMarqueeState extends State<ScrollMarquee> {
   }
 
   Future<bool> _scroll() async {
+    if (widget.speed == Speed.stop) {
+      return false;
+    }
+
     double _moveDistance = 10.0;
 
     _position += _moveDistance;
-    _scrollController.animateTo(_position, duration: widget.moveDuration, curve: Curves.linear);
+    _scrollController.animateTo(_position, duration: widget.speed.moveDuration, curve: Curves.linear);
 
-    await Future.delayed(widget.moveDuration);
+    await Future.delayed(widget.speed.moveDuration);
     return true;
   }
 }
