@@ -31,11 +31,13 @@ class _AlternateMarqueeState extends State<AlternateMarquee> {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      scrollDirection: Axis.horizontal,
-      child: Row(children: widget.items),
-      controller: _scrollController,
-      physics: NeverScrollableScrollPhysics(),// not allow the user to scroll.
+    return Center(
+      child: SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        child: Row(children: widget.items),
+        controller: _scrollController,
+        physics: NeverScrollableScrollPhysics(), // not allow the user to scroll.
+      )
     );
   }
 
@@ -46,14 +48,10 @@ class _AlternateMarqueeState extends State<AlternateMarquee> {
   }
 
   Future<bool> _scroll() async {
-    if (widget.speed == Speed.stop) {
-      return false;
-    }
-
     await Future.delayed(widget.speed.pauseDuration);
-    _scrollController.animateTo(_scrollController.position.maxScrollExtent, duration: widget.speed.animationDuration, curve: Curves.easeOut);
+    _scrollController.animateTo(widget.speed == Speed.stop ? 0.0 : _scrollController.position.maxScrollExtent, duration: widget.speed.animationDuration, curve: Curves.easeOut);
     await Future.delayed(widget.speed.pauseDuration);
-    _scrollController.animateTo(_scrollController.position.minScrollExtent, duration: widget.speed.backDuration, curve: Curves.easeOut);
+    _scrollController.animateTo(widget.speed == Speed.stop ? 0.0 : _scrollController.position.minScrollExtent, duration: widget.speed.backDuration, curve: Curves.easeOut);
     return true;
   }
 }

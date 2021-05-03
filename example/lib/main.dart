@@ -23,8 +23,6 @@ class _RootWidget extends StatelessWidget {
 
     return Center(
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Expanded(
             child: ScrollMarquee(
@@ -32,7 +30,7 @@ class _RootWidget extends StatelessWidget {
                   Image.asset("images/puppy.jpg", width: 100, height: 100),
                   Text(" Hello Flutter ", style: _textStyle)
                 ],
-                speed: Speed.slow,
+                speed: Speed.slow
             ),
           ),
           SizedBox(
@@ -46,7 +44,7 @@ class _RootWidget extends StatelessWidget {
                   SizedBox(width: 10),
                   Image.asset("images/puppy.jpg", width: 50, height: 50)
                 ],
-              speed: Speed.fast,
+              speed: Speed.fast
             ),
           )
         ],
