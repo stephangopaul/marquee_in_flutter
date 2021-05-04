@@ -49,9 +49,9 @@ class _AlternateMarqueeState extends State<AlternateMarquee> {
 
   Future<bool> _scroll() async {
     await Future.delayed(widget.speed.pauseDuration);
-    _scrollController.animateTo(widget.speed == Speed.stop ? 0.0 : _scrollController.position.maxScrollExtent, duration: widget.speed.animationDuration, curve: Curves.easeOut);
+    _scrollController.animateTo( _scrollController.position.maxScrollExtent, duration: widget.speed.animationDuration, curve: Curves.easeOut);
     await Future.delayed(widget.speed.pauseDuration);
-    _scrollController.animateTo(widget.speed == Speed.stop ? 0.0 : _scrollController.position.minScrollExtent, duration: widget.speed.backDuration, curve: Curves.easeOut);
+    _scrollController.animateTo(_scrollController.position.minScrollExtent, duration: widget.speed.backDuration, curve: Curves.easeOut);
     return true;
   }
 }

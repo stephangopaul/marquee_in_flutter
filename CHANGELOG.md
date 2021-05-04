@@ -6,3 +6,6 @@
 
 ## 1.0.2
 * Place in the center when speed is stop.
+
+## 1.0.3
+* Remove stop from speed.

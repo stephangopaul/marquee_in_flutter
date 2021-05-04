@@ -39,7 +39,6 @@ class _ScrollMarqueeState extends State<ScrollMarquee> {
               child: widget.items[index % widget.items.length]
             );
           },
-          itemCount: widget.speed == Speed.stop ? widget.items.length : null,
           scrollDirection: Axis.horizontal,
           controller: _scrollController,
           physics: NeverScrollableScrollPhysics(), // not allow the user to scroll.
@@ -55,7 +54,7 @@ class _ScrollMarqueeState extends State<ScrollMarquee> {
   }
 
   Future<bool> _scroll() async {
-    double _moveDistance = widget.speed == Speed.stop ? 0.0 : 10.0;
+    double _moveDistance = 10.0;
 
     _position += _moveDistance;
     _scrollController.animateTo(_position, duration: widget.speed.moveDuration, curve: Curves.linear);

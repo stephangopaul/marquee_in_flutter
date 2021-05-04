@@ -1,5 +1,4 @@
 enum Speed {
-  stop,
   slow,
   normal,
   fast
@@ -8,8 +7,6 @@ enum Speed {
 extension SpeedExtensionForScroll on Speed {
   Duration get moveDuration {
     switch (this) {
-      case Speed.stop:
-        return Duration.zero;
       case Speed.slow:
         return Duration(milliseconds: 100);
       case Speed.normal:
@@ -23,8 +20,6 @@ extension SpeedExtensionForScroll on Speed {
 extension SpeedExtensionForAlternate on Speed {
   Duration get animationDuration {
     switch (this) {
-      case Speed.stop:
-        return Duration.zero;
       case Speed.slow:
         return Duration(milliseconds: 1500);
       case Speed.normal:
