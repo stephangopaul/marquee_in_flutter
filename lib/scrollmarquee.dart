@@ -57,7 +57,9 @@ class _ScrollMarqueeState extends State<ScrollMarquee> {
     double _moveDistance = 10.0;
 
     _position += _moveDistance;
-    _scrollController.animateTo(_position, duration: widget.speed.moveDuration, curve: Curves.linear);
+    if (_scrollController.hasClients) {
+      _scrollController.animateTo(_position, duration: widget.speed.moveDuration, curve: Curves.linear);
+    }
 
     await Future.delayed(widget.speed.moveDuration);
     return true;

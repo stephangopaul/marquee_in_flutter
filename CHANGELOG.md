@@ -9,3 +9,6 @@
 
 ## 1.0.3
 * Remove stop from speed.
+
+## 1.0.4
+# Add scroll defense code.
