@@ -1,12 +1,10 @@
-enum Speed {
-  slow,
-  normal,
-  fast
-}
+enum Speed { slowest, slow, normal, fast }
 
 extension SpeedExtensionForScroll on Speed {
   Duration get moveDuration {
     switch (this) {
+      case Speed.slowest:
+        return Duration(milliseconds: 500);
       case Speed.slow:
         return Duration(milliseconds: 100);
       case Speed.normal:
@@ -20,6 +18,8 @@ extension SpeedExtensionForScroll on Speed {
 extension SpeedExtensionForAlternate on Speed {
   Duration get animationDuration {
     switch (this) {
+      case Speed.slowest:
+        return Duration(milliseconds: 2000);
       case Speed.slow:
         return Duration(milliseconds: 1500);
       case Speed.normal:
